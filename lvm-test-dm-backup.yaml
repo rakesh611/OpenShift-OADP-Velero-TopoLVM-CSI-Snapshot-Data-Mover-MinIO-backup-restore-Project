@@ -1,0 +1,23 @@
+apiVersion: velero.io/v1
+kind: Backup
+metadata:
+  name: lvm-test-dm-backup
+  namespace: openshift-adp
+spec:
+  includedNamespaces:
+  - default
+
+  storageLocation: default
+
+  volumeSnapshotLocations:
+  - default
+
+  snapshotMoveData: true
+
+  defaultVolumesToFsBackup: false
+
+  csiSnapshotTimeout: 10m
+
+  itemOperationTimeout: 4h
+
+  ttl: 720h

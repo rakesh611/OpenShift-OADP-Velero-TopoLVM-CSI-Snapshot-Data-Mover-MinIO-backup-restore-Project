@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: storage-test
+spec:
+  containers:
+    - name: test
+      image: registry.access.redhat.com/ubi9/ubi
+      command:
+        - /bin/bash
+        - -c
+        - |
+          echo "OADP local storage practice" > /data/test.txt
+          sleep 3600
+      volumeMounts:
+        - name: data
+          mountPath: /data
+  volumes:
+    - name: data
+      persistentVolumeClaim:
+        claimName: test-pvc

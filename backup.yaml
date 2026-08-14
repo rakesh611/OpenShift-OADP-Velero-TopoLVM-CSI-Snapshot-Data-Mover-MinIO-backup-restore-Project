@@ -1,0 +1,14 @@
+apiVersion: velero.io/v1
+kind: Backup
+metadata:
+  name: lvm-test-backup
+  namespace: openshift-adp
+spec:
+  includedNamespaces:
+    - default
+
+  storageLocation: default
+
+  ttl: 720h
+
+  snapshotVolumes: true

@@ -1,0 +1,48 @@
+apiVersion: oadp.openshift.io/v1alpha1
+kind: DataProtectionApplication
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"oadp.openshift.io/v1alpha1","kind":"DataProtectionApplication","metadata":{"annotations":{},"name":"dpa","namespace":"openshift-adp"},"spec":{"backupLocations":[{"name":"default","velero":{"config":{"insecureSkipTLSVerify":"true","region":"us-east-1","s3ForcePathStyle":"true","s3Url":"http://minio.minio.svc:9000"},"credential":{"key":"cloud","name":"cloud-credentials"},"default":true,"objectStorage":{"bucket":"my-oadp-backup","prefix":"openshift"},"provider":"aws"}}],"configuration":{"velero":{"defaultPlugins":["aws","openshift","csi"]}},"snapshotLocations":[{"name":"default","velero":{"config":{"region":"us-east-1"},"provider":"aws"}}]}}
+  creationTimestamp: "2026-08-14T04:39:01Z"
+  generation: 2
+  name: dpa
+  namespace: openshift-adp
+  resourceVersion: "117687"
+  uid: 00f280ee-5c59-4a54-baec-d469aa237c55
+spec:
+  backupLocations:
+  - name: default
+    velero:
+      config:
+        insecureSkipTLSVerify: "true"
+        region: us-east-1
+        s3ForcePathStyle: "true"
+        s3Url: http://minio.minio.svc:9000
+      credential:
+        key: cloud
+        name: cloud-credentials
+      default: true
+      objectStorage:
+        bucket: my-oadp-backup
+        prefix: openshift
+      provider: aws
+  configuration:
+    velero:
+      defaultPlugins:
+      - aws
+      - openshift
+      - csi
+  snapshotLocations:
+  - name: default
+    velero:
+      config:
+        region: us-east-1
+      provider: aws
+status:
+  conditions:
+  - lastTransitionTime: "2026-08-14T04:45:39Z"
+    message: Reconcile complete
+    reason: Complete
+    status: "True"
+    type: Reconciled
